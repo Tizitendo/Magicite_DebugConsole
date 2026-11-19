@@ -15,7 +15,7 @@ static class Commands
             itemNames.Add(itemDef.name);
         }
         Console.RegisterCommand("Give_Item", GiveItem, [itemNames]);
-        Console.RegisterCommand("DebugMode", GiveItem, [itemNames]);
+        Console.RegisterCommand("DebugMode", DebugMode);
     }
 
     static void DebugMode(object[] parameters)
