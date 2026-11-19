@@ -1,0 +1,51 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net35</TargetFramework>
+		<LangVersion>preview</LangVersion>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="BepInEx.Analyzers" Version="1.0.*">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+
+		<PackageReference Include="BepInEx.Core" Version="5.4.21" />
+
+    	<PackageReference Include="UnityEngine.Modules" Version="5.3.2" IncludeAssets="compile" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Reference Include="MMHOOK">
+	    <HintPath>..\..\references\MMHOOK_Assembly-UnityScript.dll</HintPath>
+	  </Reference>
+	  <Reference Include="MMHOOK_UnityEngine">
+	    <HintPath>..\..\references\MMHOOK_UnityEngine.dll</HintPath>
+	  </Reference>
+	  <Reference Include="MMHOOK_UnityEngine.UI">
+	    <HintPath>..\..\references\MMHOOK_UnityEngine.UI.dll</HintPath>
+	  </Reference>
+	  <Reference Include="GameLibs">
+	    <HintPath>..\..\references\Assembly-UnityScript-nstrip.dll</HintPath>
+	  </Reference>
+	  <!-- <Reference Include="UnityEngine">
+	    <HintPath>..\..\references\UnityEngine.dll</HintPath>
+	  </Reference> -->
+	  <Reference Include="UnityEngine">
+	    <HintPath>..\..\references\UnityEngine-nstrip.dll</HintPath>
+	  </Reference>
+	  <Reference Include="Onyx_API">
+	    <HintPath>..\..\references\Onyx_API.dll</HintPath>
+	  </Reference>
+	</ItemGroup>
+
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+		<Exec Command="rsync -avz $(ProjectDir)../src/Images $(ProjectDir)../Thunderstore/plugins" />
+		<Exec Command="rsync -avz $(TargetPath) $(ProjectDir)../Thunderstore/plugins" />
+	  	<Exec Command="rm -rf /home/tizian/.local/share/com.kesomannen.gale/magicite/profiles/Default/BepInEx/plugins/0n_x-testmod" />
+		<Exec Command="mkdir /home/tizian/.local/share/com.kesomannen.gale/magicite/profiles/Default/BepInEx/plugins/0n_x-testmod" />
+		<Exec Command="rsync -avz $(ProjectDir)../Thunderstore /home/tizian/.local/share/com.kesomannen.gale/magicite/profiles/Default/BepInEx/plugins/0n_x-testmod" />
+	</Target>
+</Project>

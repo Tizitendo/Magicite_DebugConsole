@@ -1,0 +1,9 @@
+﻿{
+	"name": "DebugConsole",
+	"version_number": "1.0.0",
+	"website_url": "https://github.com/Tizitendo/AntlerFix",
+	"description": "",
+	"dependencies": [
+		"0n_x-Onyx_API-0.1.0"
+	]
+}
