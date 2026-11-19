@@ -1,8 +1,8 @@
 ﻿{
 	"name": "DebugConsole",
 	"version_number": "1.0.0",
-	"website_url": "https://github.com/Tizitendo/AntlerFix",
-	"description": "",
+	"website_url": "https://github.com/Tizitendo/Magicite_DebugConsole",
+	"description": "Simple console mod",
 	"dependencies": [
 		"0n_x-Onyx_API-0.1.0"
 	]
